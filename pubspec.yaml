@@ -1,0 +1,26 @@
+name: datecs_sk1_21
+description: >-
+  Complete Dart SDK for Datecs SK1-21 fiscal thermal printer. Supports fiscal receipts,
+  reports, PLU items, VAT rates, electronic journal, fiscal memory, and display control via
+  DUDE COM driver on Windows.
+version: 0.1.0
+homepage: https://icefelix.com
+repository: https://github.com/alexbordei/datecs_sk1_21
+issue_tracker: https://github.com/alexbordei/datecs_sk1_21/issues
+documentation: https://github.com/alexbordei/datecs_sk1_21#readme
+topics:
+  - printer
+  - fiscal
+  - pos
+  - thermal-printer
+  - datecs
+
+platforms:
+  windows:
+
+environment:
+  sdk: ^3.0.0
+
+dev_dependencies:
+  lints: ^5.0.0
+  test: ^1.25.0

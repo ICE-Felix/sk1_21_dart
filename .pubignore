@@ -1,0 +1,22 @@
+# Exclude documentation PDFs and XLS files (too large for pub.dev)
+DOCUMENTATION/
+
+# Exclude C# demo code
+CSharp_Demo_01/
+
+# Exclude Claude instructions
+CLAUDE.md
+
+# Exclude development files
+.dart_tool/
+.packages
+pubspec.lock
+*.log
+
+# Exclude IDE/editor files
+.idea/
+.vscode/
+*.iml
+
+# Exclude Claude session files
+.claude/
