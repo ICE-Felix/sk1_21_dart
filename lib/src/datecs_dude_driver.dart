@@ -444,7 +444,11 @@ Write-Output "DISCONNECTED"
   Future<DatecsResponse> checkConnection() => executeCommand(45);
 
   @override
-  Future<DatecsResponse> printDiagnostic() => executeCommand(71);
+  Future<DatecsResponse> printDiagnostic() async {
+    final result = await executeCommand(71);
+    await executeCommand(45, '100\t');
+    return result;
+  }
 
   // ============ Display ============
 
@@ -501,7 +505,11 @@ Write-Output "DISCONNECTED"
   }
 
   @override
-  Future<DatecsResponse> closeFiscalReceipt() => executeCommand(56);
+  Future<DatecsResponse> closeFiscalReceipt() async {
+    final result = await executeCommand(56);
+    await executeCommand(45, '100\t');
+    return result;
+  }
 
   @override
   Future<DatecsResponse> cancelFiscalReceipt() => executeCommand(60);
@@ -531,13 +539,19 @@ Write-Output "DISCONNECTED"
   }
 
   @override
-  Future<DatecsResponse> closeNonFiscalReceipt() => executeCommand(39);
+  Future<DatecsResponse> closeNonFiscalReceipt() async {
+    final result = await executeCommand(39);
+    await executeCommand(45, '100\t');
+    return result;
+  }
 
   // ============ Reports ============
 
   @override
-  Future<DatecsResponse> generateDailyReport(DailyReportType type) {
-    return executeCommand(69, type.code);
+  Future<DatecsResponse> generateDailyReport(DailyReportType type) async {
+    final result = await executeCommand(69, type.code);
+    await executeCommand(45, '100\t');
+    return result;
   }
 
   // ============ Other ============
@@ -697,17 +711,21 @@ Write-Output "DISCONNECTED"
 
   @override
   Future<DatecsResponse> printFiscalReportByDates(
-      DateTime startDate, DateTime endDate) {
+      DateTime startDate, DateTime endDate) async {
     final start =
         '${startDate.day.toString().padLeft(2, '0')}-${startDate.month.toString().padLeft(2, '0')}-${(startDate.year % 100).toString().padLeft(2, '0')}';
     final end =
         '${endDate.day.toString().padLeft(2, '0')}-${endDate.month.toString().padLeft(2, '0')}-${(endDate.year % 100).toString().padLeft(2, '0')}';
-    return executeCommand(94, '$start\t$end\t');
+    final result = await executeCommand(94, '$start\t$end\t');
+    await executeCommand(45, '100\t');
+    return result;
   }
 
   @override
-  Future<DatecsResponse> printFiscalReportByZNumbers(int startZ, int endZ) {
-    return executeCommand(95, '$startZ\t$endZ\t');
+  Future<DatecsResponse> printFiscalReportByZNumbers(int startZ, int endZ) async {
+    final result = await executeCommand(95, '$startZ\t$endZ\t');
+    await executeCommand(45, '100\t');
+    return result;
   }
 
   @override
@@ -790,23 +808,31 @@ Write-Output "DISCONNECTED"
   // ============ Reports ============
 
   @override
-  Future<DatecsResponse> printOperatorsReport() {
-    return executeCommand(105);
+  Future<DatecsResponse> printOperatorsReport() async {
+    final result = await executeCommand(105);
+    await executeCommand(45, '100\t');
+    return result;
   }
 
   @override
-  Future<DatecsResponse> printPluReport({int startCode = 0, int endCode = 0}) {
-    return executeCommand(111, '$startCode\t$endCode\t');
+  Future<DatecsResponse> printPluReport({int startCode = 0, int endCode = 0}) async {
+    final result = await executeCommand(111, '$startCode\t$endCode\t');
+    await executeCommand(45, '100\t');
+    return result;
   }
 
   @override
-  Future<DatecsResponse> printDepartmentsReport() {
-    return executeCommand(69, 'D');
+  Future<DatecsResponse> printDepartmentsReport() async {
+    final result = await executeCommand(69, 'D');
+    await executeCommand(45, '100\t');
+    return result;
   }
 
   @override
-  Future<DatecsResponse> printItemGroupsReport() {
-    return executeCommand(69, 'G');
+  Future<DatecsResponse> printItemGroupsReport() async {
+    final result = await executeCommand(69, 'G');
+    await executeCommand(45, '100\t');
+    return result;
   }
 
   // ============ Information Queries ============
